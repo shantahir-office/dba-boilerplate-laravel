@@ -1,0 +1,216 @@
+@import "tailwindcss";
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+@source '../../node_modules/tw-elements/js/**/*.js';
+
+@theme {
+    --font-sans:
+        "Instrument Sans", ui-sans-serif, system-ui, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
+}
+
+@theme {
+    --font-poppins: "Poppins", sans-serif;
+    --font-bebas-neue: "Base Neue Trial", sans-serif;
+    --color-primary: #5C6CEE;
+    --color-secondary: #EBF3FD;
+    --color-light: #96989F;
+    --breakpoint-*: initial;
+    --breakpoint-sm: 640px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1200px;
+    --breakpoint-2xl: 1536px;
+    --breakpoint-4xl: 1920px;
+}
+@layer base {
+    * {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+        text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.05);
+    }
+    img,
+    video {
+        max-width: 100%;
+        height: revert-layer;
+    }
+    html {
+        scroll-padding-top: 70px;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        overflow-x: hidden;
+        @apply font-bebas-neue;
+    }
+    section {
+        @apply py-[clamp(40px,7vw,100px)] relative;
+    }
+    a {
+        @apply transition-all no-underline;
+    }
+    [role="button"] {
+        @apply cursor-pointer;
+    }
+    p,
+    ul li {
+        @apply text-black font-poppins font-normal leading-relaxed text-sm lg:text-base 2xl:text-lg;
+    }
+    p {
+        margin-bottom: 1rem;
+    }
+    button {
+        @apply cursor-pointer;
+    }
+    h1,
+    .h1,
+    h2,
+    .h2,
+    h3,
+    .h3,
+    h4,
+    .h4,
+    h5,
+    .h5,
+    h6,
+    .h6 {
+        @apply text-black mb-3  leading-tight font-bebas-neue;
+    }
+
+    h1,
+    .h1 {
+        @apply text-[clamp(1.3125rem,1.3125rem+2.5vw,3.3125rem)]
+          sm:text-[clamp(1.6875rem,1.6875rem+2vw,3.3125rem)]
+          lg:text-[clamp(2.0625rem,2.0625rem+1.5vw,3.3125rem)];
+    }
+
+    h2,
+    .h2 {
+        @apply text-[clamp(1.0625rem,1.0625rem+2.2vw,2.8125rem)]
+          sm:text-[clamp(1.3125rem,1.3125rem+1.8vw,2.8125rem)]
+          lg:text-[clamp(1.6875rem,1.6875rem+1.3vw,2.8125rem)] leading-none;
+    }
+
+    h3,
+    .h3 {
+        @apply text-[clamp(0.9375rem,0.9375rem+2vw,2.3125rem)]
+          sm:text-[clamp(1.0625rem,1.0625rem+1.6vw,2.3125rem)]
+          lg:text-[clamp(1.3125rem,1.3125rem+1.1vw,2.3125rem)];
+    }
+
+    /* h4,
+    .h4 {
+        @apply text-[clamp(0.8125rem,0.8125rem+1.8vw,1.8125rem)]
+          sm:text-[clamp(0.9375rem,0.9375rem+1.4vw,1.8125rem)]
+          lg:text-[clamp(1.0625rem,1.0625rem+0.9vw,1.8125rem)];
+    }
+
+    h5,
+    .h5 {
+        @apply text-[clamp(0.6875rem,0.6875rem+1.6vw,1.5625rem)]
+          sm:text-[clamp(0.8125rem,0.8125rem+1.2vw,1.5625rem)]
+          lg:text-[clamp(0.9375rem,0.9375rem+0.7vw,1.5625rem)];
+    }
+
+    h6,
+    .h6 {
+        @apply text-[clamp(0.5625rem,0.5625rem+1.4vw,1.3125rem)]
+          sm:text-[clamp(0.6875rem,0.6875rem+1vw,1.3125rem)]
+          lg:text-[clamp(0.8125rem,0.8125rem+0.5vw,1.3125rem)];
+    } */
+    .horizontal-scroll-none::-webkit-scrollbar {
+        width: 0px;
+        height: 0px;
+        background: rgba(0, 0, 0, 0);
+    }
+
+    ::-webkit-scrollbar {
+        width: 5px;
+        height: 0.6em;
+        background: rgb(224, 220, 220);
+    }
+    .header_overflow::-webkit-scrollbar {
+        width: 3px;
+        height: 0.6em;
+        background: rgb(224, 220, 220);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--color-primary);
+        border-radius: 100vw;
+        background-clip: content-box;
+    }
+
+    ::selection {
+        color: var(--color-white);
+        background: var(--color-primary);
+        text-shadow: none;
+    }
+}
+@layer utilities {
+    .container {
+        @apply px-4 lg:px-3 4xl:px-0 w-full max-w-[100%] sm:max-w-[640px] md:max-w-[645px] lg:max-w-[900px] xl:max-w-[1184px] 2xl:max-w-[1390px] 4xl:max-w-[1620px] mx-auto;
+    }
+}
+
+@layer components {
+    .row {
+        @apply flex flex-wrap -mx-3 [&>div]:px-3 space-y-5 lg:space-y-0;
+    }
+
+    
+.btn-primary {
+    @apply inline-flex items-center justify-center gap-3
+    bg-[linear-gradient(90deg,#0A1715_0%,#172D2A_50%,#0A1715_100%)]
+    text-[#F5E2B3] uppercase
+    border border-[rgba(212,175,55,0.6)]
+    rounded-[2px]
+    font-medium 
+    text-sm 4xl:text-[16px] leading-[23px]
+    px-5 4xl:px-9 py-[10px] 4xl:py-[18px]
+    transition-all duration-300
+    shadow-[0px_14px_37px_rgba(2,24,22,0.25)]
+    hover:-translate-y-0.5 hover:opacity-90;
+
+    will-change: transform;
+}
+.btn-primary.bg-light {
+    background: #EAE7E0;
+}
+
+
+    /* image filer */
+    .image-white {
+        filter: brightness(0) invert(1);
+    }
+    .image-dark {
+        filter: brightness(0);
+    }
+
+
+    /* section title */
+    .section-title {
+        @apply max-w-6xl mx-auto;
+    }
+    .subtitle{
+        @apply text-[20px] xl:text-[24px]  mb-2 xl:mb-6 font-bebas-neue text-primary font-light uppercase inline-block leading-[1.2] lg:text-start text-center tracking-[4px]
+    }
+
+    .section-title {
+        @apply text-[25px] lg:text-[30px] 2xl:text-[35px] 4xl:text-[48px] capitalize mb-2 font-bebas-neue font-bold inline-block leading-[1.2] lg:text-start text-center;
+    }
+
+    /* hero section */
+    .hero-banner {
+        @apply bg-cover bg-center bg-no-repeat min-h-[100dvh]  z-1;
+    }
+
+}
+
+
+
